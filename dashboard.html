@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pustaka Coffee </title>
+    <style > body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px;
+      }
+      .wireframe-section {
+        margin-bottom: 40px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #8b4513;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .wireframe-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .wireframe-item {
+        flex: 1;
+        min-width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 15px;
+        background-color: #f9f9f9;
+      }
+      .navbar {
+        background-color: #8b4513;
+        color: white;
+        padding: 10px 0;
+        margin-bottom: 20px;
+      }
+      .navbar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-weight: bold;
+        font-size: 22px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+      .sidebar {
+        width: 250px;
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-right: 1px solid #ddd;
+        height: 100%;
+      }
+      .content {
+        flex: 1;
+        padding: 20px;
+      }
+      .dashboard-layout {
+        display: flex;
+        min-height: 80vh;
+      }
+      .menu-item {
+        padding: 10px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .menu-item:hover {
+        background-color: #e0e0e0;
+      }
+      .menu-item.active {
+        background-color: #d2b48c;
+        color: #fff;
+      }
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        background-color: white;
+      }
+      .charts {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      .chart {
+        flex: 1;
+        height: 200px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+      }
+      .stats {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      .stat-card {
+        flex: 1;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #efe1d1;
+        text-align: center;
+      }
+      .pos-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+      }
+      .product-item {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        background-color: white;
+      }
+      .order-summary {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 15px;
+        border: 1px solid #ddd;
+      }
+      .order-items {
+        margin-bottom: 15px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .order-total {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 15px 0;
+        text-align: right;
+      }
+      .btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      .btn-primary {
+        background-color: #8b4513;
+        color: white;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .btn-primary:hover {
+        background-color: #6a330d;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f5f5f5;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .schedule-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+      }
+      .schedule-day {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 4px;
+        min-height: 100px;
+      }
+      .schedule-header {
+        text-align: center;
+        font-weight: bold;
+        background-color: #f0f0f0;
+        padding: 5px;
+        border-radius: 4px;
+        margin-bottom: 5px;
+      }
+      .online-order {
+        background-color: #f0fff0;
+      }
+      
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="container navbar-content">
+            <div class="logo">PUSTAKA COFFEE</div>
+            <div class="nav-links">
+                <div>Dashboard</div>
+                <div>Administrator</div>
+                <div>Logout</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Wireframe Pustaka Coffee SaaS</h1>
+
+        <div class="wireframe-section">
+            <h2>Dashboard Global</h2>
+            <div class="dashboard-layout">
+                <div class="sidebar">
+                    <div class="menu-item active">Dashboard</div>
+                    <div class="menu-item">POS (Kasir)</div>
+                    <div class="menu-item">Manajemen Stok</div>
+                    <div class="menu-item">Jadwal Shift</div>
+                    <div class="menu-item">Laporan Keuangan</div>
+                    <div class="menu-item">Pemesanan Online</div>
+                    <div class="menu-item">Pengaturan</div>
+                </div>
+                <div class="content">
+                    <h3>Dashboard Penjualan</h3>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <h4>Total Penjualan Hari Ini</h4>
+                            <div style="font-size: 24px; font-weight: bold;">Rp 2.500.000</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Jumlah Transaksi</h4>
+                            <div style="font-size: 24px; font-weight: bold;">78</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Produk Terlaris</h4>
+                            <div style="font-size: 24px; font-weight: bold;">Cappuccino</div>
+                        </div>
+                    </div>
+                    <div class="charts">
+                        <div class="chart">Grafik Penjualan Mingguan</div>
+                        <div class="chart">Distribusi Penjualan per Kategori</div>
+                    </div>
+                    <div class="card">
+                        <h4>Transaksi Terbaru</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Waktu</th>
+                                    <th>Jumlah Item</th>
+                                    <th>Total</th>
+                                    <th>Kasir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#1001</td>
+                                    <td>10:25</td>
+                                    <td>3</td>
+                                    <td>Rp 75.000</td>
+                                    <td>Budi</td>
+                                </tr>
+                                <tr>
+                                    <td>#1000</td>
+                                    <td>10:15</td>
+                                    <td>2</td>
+                                    <td>Rp 45.000</td>
+                                    <td>Ani</td>
+                                </tr>
+                                <tr>
+                                    <td>#999</td>
+                                    <td>09:45</td>
+                                    <td>5</td>
+                                    <td>Rp 125.000</td>
+                                    <td>Budi</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wireframe-section">
+            <h2>POS (Point of Sale)</h2>
+            <div class="pos-layout">
+                <div>
+                    <div style="margin-bottom: 20px;">
+                        <h3>Menu Produk</h3>
+                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                            <button class="btn" style="background-color: #d2b48c; color: white;">Semua</button>
+                            <button class="btn" style="background-color: #f5f5f5;">Kopi</button>
+                            <button class="btn" style="background-color: #f5f5f5;">Non-Kopi</button>
+                            <button class="btn" style="background-color: #f5f5f5;">Makanan</button>
+                        </div>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <div style="height: 70px; background-color: #f0f0f0; margin-bottom: 10px; border-radius: 4px;"></div>
+                                <div>Espresso</div>
+                                <div>Rp 20.000</div>
+                            </div>
+                            <div class="product-item">
+                                <div style="height: 70px; background-color: #f0f0f0; margin-bottom: 10px; border-radius: 4px;"></div>
+                                <div>Americano</div>
+                                <div>Rp 25.000</div>
+                            </div>
+                            <div class="product-item">
+                                <div style="height: 70px; background-color: #f0f0f0; margin-bottom: 10px; border-radius: 4px;"></div>
+                                <div>Cappuccino</div>
+                                <div>Rp 30.000</div>
+                            </div>
+                            <div class="product-item">
+                                <div style="height: 70px; background-color: #f0f0f0; margin-bottom: 10px; border-radius: 4px;"></div>
+                                <div>Latte</div>
+                                <div>Rp 30.000</div>
+                            </div>
+                            <div class="product-item">
+                                <div style="height: 70px; background-color: #f0f0f0; margin-bottom: 10px; border-radius: 4px;"></div>
+                                <div>Mocha</div>
+                                <div>Rp 35.000</div>
+                            </div>
+                            <div class="product-item">
+                                <div style="height: 70px; background-color: #f0f0f0; margin-bottom: 10px; border-radius: 4px;"></div>
+                                <div>Croissant</div>
+                                <div>Rp 25.000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <h3>Pesanan</h3>
+                    <div class="order-items">
+                        <div class="order-item">
+                            <div>
+                                <div>Cappuccino</div>
+                                <div style="font-size: 12px; color: #777;">1 x Rp 30.000</div>
+                            </div>
+                            <div>Rp 30.000</div>
+                        </div>
+                        <div class="order-item">
+                            <div>
+                                <div>Croissant</div>
+                                <div style="font-size: 12px; color: #777;">2 x Rp 25.000</div>
+                            </div>
+                            <div>Rp 50.000</div>
+                        </div>
+                    </div>
+                    <div class="order-total">
+                        <div>Total: Rp 80.000</div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label>Metode Pembayaran</label>
+                            <select class="form-control">
+                                <option>Tunai</option>
+                                <option>Kartu Debit/Kredit</option>
+                                <option>QRIS</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary">PROSES PEMBAYARAN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wireframe-section">
+            <h2>Manajemen Stok Bahan</h2>
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <h3>Daftar Bahan</h3>
+                    <button class="btn" style="background-color: #8B4513; color: white;">+ Tambah Bahan</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Bahan</th>
+                            <th>Kategori</th>
+                            <th>Stok Tersedia</th>
+                            <th>Satuan</th>
+                            <th>Stok Minimum</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Biji Kopi Arabika</td>
+                            <td>Bahan Baku</td>
+                            <td>5</td>
+                            <td>kg</td>
+                            <td>2</td>
+                            <td style="color: green;">Baik</td>
+                            <td>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Lihat Detail</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="wireframe-section">
+            <h2>Laporan Keuangan Otomatis</h2>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                <h3>Laporan Keuangan</h3>
+                <div>
+                    <button class="btn" style="background-color: #f0f0f0;">Harian</button>
+                    <button class="btn" style="background-color: #d2b48c; color: white;">Mingguan</button>
+                    <button class="btn" style="background-color: #f0f0f0;">Bulanan</button>
+                    <button class="btn" style="background-color: #f0f0f0;">Tahunan</button>
+                    <button class="btn" style="background-color: #8B4513; color: white;">Ekspor PDF</button>
+                </div>
+            </div>
+            
+            <div class="charts">
+                <div class="chart">Grafik Pendapatan vs Pengeluaran</div>
+                <div class="chart">Grafik Arus Kas</div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <h4>Total Pendapatan</h4>
+                    <div style="font-size: 24px; font-weight: bold;">Rp 17.500.000</div>
+                    <div style="color: green;">+5% dari minggu lalu</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Total Pengeluaran</h4>
+                    <div style="font-size: 24px; font-weight: bold;">Rp 7.200.000</div>
+                    <div style="color: red;">+2% dari minggu lalu</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Laba Bersih</h4>
+                    <div style="font-size: 24px; font-weight: bold;">Rp 10.300.000</div>
+                    <div style="color: green;">+7% dari minggu lalu</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h4>Rincian Pendapatan</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Jumlah</th>
+                            <th>Persentase</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kopi</td>
+                            <td>Rp 10.500.000</td>
+                            <td>60%</td>
+                        </tr>
+                        <tr>
+                            <td>Non-Kopi</td>
+                            <td>Rp 3.500.000</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>Makanan</td>
+                            <td>Rp 3.500.000</td>
+                            <td>20%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="card">
+                <h4>Rincian Pengeluaran</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Jumlah</th>
+                            <th>Persentase</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bahan Baku</td>
+                            <td>Rp 3.600.000</td>
+                            <td>50%</td>
+                        </tr>
+                        <tr>
+                            <td>Gaji Karyawan</td>
+                            <td>Rp 2.500.000</td>
+                            <td>35%</td>
+                        </tr>
+                        <tr>
+                            <td>Utilitas</td>
+                            <td>Rp 800.000</td>
+                            <td>11%</td>
+                        </tr>
+                        <tr>
+                            <td>Lain-lain</td>
+                            <td>Rp 300.000</td>
+                            <td>4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="wireframe-section">
+            <h2>Pemesanan Online</h2>
+            <div class="dashboard-layout">
+                <div class="sidebar">
+                    <div class="menu-item">Dashboard</div>
+                    <div class="menu-item">POS (Kasir)</div>
+                    <div class="menu-item">Manajemen Stok</div>
+                    <div class="menu-item">Jadwal Shift</div>
+                    <div class="menu-item">Laporan Keuangan</div>
+                    <div class="menu-item active">Pemesanan Online</div>
+                    <div class="menu-item">Pengaturan</div>
+                </div>
+                <div class="content">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <h3>Pemesanan Online</h3>
+                        <div>
+                            <button class="btn" style="background-color: #d2b48c; color: white;">Semua</button>
+                            <button class="btn" style="background-color: #f0f0f0;">Baru</button>
+                            <button class="btn" style="background-color: #f0f0f0;">Diproses</button>
+                            <button class="btn" style="background-color: #f0f0f0;">Selesai</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card online-order">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <h4>Order #2001 - Baru</h4>
+                                <div>Nama: Ahmad Fauzi</div>
+                                <div>Waktu: 10:45, 03/05/2025</div>
+                                <div>Catatan: Extra shot espresso</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: bold;">Total: Rp 85.000</div>
+                                <div style="margin-top: 10px;">
+                                    <button class="btn" style="background-color: #8B4513; color: white; padding: 5px 10px;">Terima</button>
+                                    <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px;">Tolak</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Jumlah</th>
+                                        <th>Harga</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Americano</td>
+                                        <td>2</td>
+                                        <td>Rp 25.000</td>
+                                        <td>Rp 50.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Croissant</td>
+                                        <td>1</td>
+                                        <td>Rp 25.000</td>
+                                        <td>Rp 25.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Extra Shot</td>
+                                        <td>2</td>
+                                        <td>Rp 5.000</td>
+                                        <td>Rp 10.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <h4>Order #2000 - Diproses</h4>
+                                <div>Nama: Siti Rahma</div>
+                                <div>Waktu: 10:30, 03/05/2025</div>
+                                <div>Catatan: Tidak ada</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: bold;">Total: Rp 60.000</div>
+                                <div style="margin-top: 10px;">
+                                    <button class="btn" style="background-color: #8B4513; color: white; padding: 5px 10px;">Selesai</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Jumlah</th>
+                                        <th>Harga</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cappuccino</td>
+                                        <td>2</td>
+                                        <td>Rp 30.000</td>
+                                        <td>Rp 60.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <h4>Order #1999 - Selesai</h4>
+                                <div>Nama: Budi Santoso</div>
+                                <div>Waktu: 09:15, 03/05/2025</div>
+                                <div>Catatan: Tidak ada</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: bold;">Total: Rp 110.000</div>
+                                <div style="margin-top: 10px;">
+                                    <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px;">Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>;">Edit</button>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Atur Stok</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Biji Kopi Robusta</td>
+                            <td>Bahan Baku</td>
+                            <td>3</td>
+                            <td>kg</td>
+                            <td>2</td>
+                            <td style="color: green;">Baik</td>
+                            <td>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Edit</button>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Atur Stok</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Susu Fresh</td>
+                            <td>Bahan Pendukung</td>
+                            <td>4</td>
+                            <td>liter</td>
+                            <td>5</td>
+                            <td style="color: red;">Rendah</td>
+                            <td>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Edit</button>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Atur Stok</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gula</td>
+                            <td>Bahan Pendukung</td>
+                            <td>8</td>
+                            <td>kg</td>
+                            <td>3</td>
+                            <td style="color: green;">Baik</td>
+                            <td>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Edit</button>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Atur Stok</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="card">
+                <h3>Riwayat Penggunaan Bahan</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Bahan</th>
+                            <th>Jumlah</th>
+                            <th>Keterangan</th>
+                            <th>Pengguna</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>03/05/2025</td>
+                            <td>Biji Kopi Arabika</td>
+                            <td>-0.5 kg</td>
+                            <td>Penggunaan Harian</td>
+                            <td>Budi</td>
+                        </tr>
+                        <tr>
+                            <td>03/05/2025</td>
+                            <td>Susu Fresh</td>
+                            <td>-1 liter</td>
+                            <td>Penggunaan Harian</td>
+                            <td>Ani</td>
+                        </tr>
+                        <tr>
+                            <td>02/05/2025</td>
+                            <td>Biji Kopi Robusta</td>
+                            <td>+5 kg</td>
+                            <td>Pengadaan Baru</td>
+                            <td>Admin</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="wireframe-section">
+            <h2>Jadwal Shift Karyawan</h2>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                <h3>Jadwal Minggu Ini (1-7 Mei 2025)</h3>
+                <div>
+                    <button class="btn" style="background-color: #f0f0f0;">Minggu Sebelumnya</button>
+                    <button class="btn" style="background-color: #f0f0f0;">Minggu Berikutnya</button>
+                    <button class="btn" style="background-color: #8B4513; color: white;">+ Tambah Shift</button>
+                </div>
+            </div>
+            
+            <div class="schedule-grid">
+                <div class="schedule-day">
+                    <div class="schedule-header">Senin</div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #e0f7fa; border-radius: 3px;">
+                        <div><b>Budi</b></div>
+                        <div>07:00 - 15:00</div>
+                    </div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #fff8e1; border-radius: 3px;">
+                        <div><b>Ani</b></div>
+                        <div>15:00 - 22:00</div>
+                    </div>
+                </div>
+                <div class="schedule-day">
+                    <div class="schedule-header">Selasa</div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #e0f7fa; border-radius: 3px;">
+                        <div><b>Deni</b></div>
+                        <div>07:00 - 15:00</div>
+                    </div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #fff8e1; border-radius: 3px;">
+                        <div><b>Ani</b></div>
+                        <div>15:00 - 22:00</div>
+                    </div>
+                </div>
+                <div class="schedule-day">
+                    <div class="schedule-header">Rabu</div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #e0f7fa; border-radius: 3px;">
+                        <div><b>Budi</b></div>
+                        <div>07:00 - 15:00</div>
+                    </div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #fff8e1; border-radius: 3px;">
+                        <div><b>Cindy</b></div>
+                        <div>15:00 - 22:00</div>
+                    </div>
+                </div>
+                <div class="schedule-day">
+                    <div class="schedule-header">Kamis</div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #e0f7fa; border-radius: 3px;">
+                        <div><b>Deni</b></div>
+                        <div>07:00 - 15:00</div>
+                    </div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #fff8e1; border-radius: 3px;">
+                        <div><b>Cindy</b></div>
+                        <div>15:00 - 22:00</div>
+                    </div>
+                </div>
+                <div class="schedule-day">
+                    <div class="schedule-header">Jumat</div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #e0f7fa; border-radius: 3px;">
+                        <div><b>Budi</b></div>
+                        <div>07:00 - 15:00</div>
+                    </div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #fff8e1; border-radius: 3px;">
+                        <div><b>Ani</b></div>
+                        <div>15:00 - 22:00</div>
+                    </div>
+                </div>
+                <div class="schedule-day">
+                    <div class="schedule-header">Sabtu</div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #e0f7fa; border-radius: 3px;">
+                        <div><b>Deni</b></div>
+                        <div>07:00 - 15:00</div>
+                    </div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #fff8e1; border-radius: 3px;">
+                        <div><b>Cindy</b></div>
+                        <div>15:00 - 22:00</div>
+                    </div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #e8f5e9; border-radius: 3px;">
+                        <div><b>Budi</b></div>
+                        <div>15:00 - 22:00</div>
+                    </div>
+                </div>
+                <div class="schedule-day">
+                    <div class="schedule-header">Minggu</div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #e0f7fa; border-radius: 3px;">
+                        <div><b>Ani</b></div>
+                        <div>07:00 - 15:00</div>
+                    </div>
+                    <div style="padding: 5px; margin-bottom: 5px; background-color: #fff8e1; border-radius: 3px;">
+                        <div><b>Deni</b></div>
+                        <div>15:00 - 22:00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: 20px;">
+                <h3>Daftar Karyawan</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Posisi</th>
+                            <th>Shift Minggu Ini</th>
+                            <th>Total Jam</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Budi</td>
+                            <td>Barista</td>
+                            <td>4</td>
+                            <td>32 jam</td>
+                            <td>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Lihat Detail</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ani</td>
+                            <td>Kasir</td>
+                            <td>4</td>
+                            <td>32 jam</td>
+                            <td>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Lihat Detail</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cindy</td>
+                            <td>Barista</td>
+                            <td>3</td>
+                            <td>24 jam</td>
+                            <td>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px;">Lihat Detail</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Deni</td>
+                            <td>Barista/Kasir</td>
+                            <td>4</td>
+                            <td>32 jam</td>
+                            <td>
+                                <button class="btn" style="background-color: #f0f0f0; padding: 5px 10px; font-size: 12px
+                                ">Lihat Detail</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Highlight active menu item
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.menu-item').forEach(menu => menu.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        // Filter products in POS
+        const productButtons = document.querySelectorAll('.btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        productButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                productButtons.forEach(btn => btn.style.backgroundColor = '#f5f5f5');
+                button.style.backgroundColor = '#d2b48c';
+                button.style.color = 'white';
+
+                const category = button.textContent;
+                productItems.forEach(item => {
+                    if (category === 'Semua' || item.textContent.includes(category)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Handle order actions
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.textContent === 'Terima') {
+                    alert('Pesanan diterima!');
+                } else if (button.textContent === 'Tolak') {
+                    alert('Pesanan ditolak!');
+                } else if (button.textContent === 'Selesai') {
+                    alert('Pesanan selesai!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
